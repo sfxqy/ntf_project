@@ -1,0 +1,83 @@
+
+server:
+  port: 8088
+  wechat-api-url:
+  wechat-js-api-debug: false
+  wechat-js-api-beta: false
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  profiles:
+    active: dev
+  application:
+    name: nft
+  datasource:
+    name: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    port: 6379
+    database: 1
+#    timeout unit ms
+#    default timeout value is 2s
+#    timeout: 2000
+#    jedis:
+#      pool:
+#        max-active: 8
+#        max-idle: 8
+#        max-wait: -1
+#        min-idle: 0
+
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/views
+#      suffix: .jsp
+
+
+## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
+mybatis-plus:
+  mapperLocations: classpath*:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  typeAliasesPackage: com.iyiou.yiou.*.*.model.*.*  # 注意：对应实体类的路径
+  configuration:
+    mapUnderscoreToCamelCase: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+## 日志输出范围配置
+logging:
+  config: classpath:log4j2-spring.xml
+  #path: /mnt/log
+  #file:
+  #path: D:/log
+  level:
+    com.iyiou.yiou: error
+    springfox.documentation: error
+    org.mybatis: error
+    org.apache: error
+    com.alibaba: error
+    com.netflix: error
+    org.springframework: info
+    org.quartz: error
+    cn.jay.repository: trace
+    org.springframework.boot.autoconfigure: ERROR
+
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
