@@ -1,7 +1,6 @@
 package com.ntf.ntf_project.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
 import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,7 +15,6 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("crm_user")
-@ApiModel(value = "User对象", description = "用户表")
 public class User {
 
 

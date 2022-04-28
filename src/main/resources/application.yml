@@ -1,6 +1,6 @@
 
 server:
-  port: 8088
+  port: 8080
   wechat-api-url:
   wechat-js-api-debug: false
   wechat-js-api-beta: false
@@ -24,37 +24,20 @@ spring:
   redis:
     port: 6379
     database: 1
-#    timeout unit ms
-#    default timeout value is 2s
-#    timeout: 2000
-#    jedis:
-#      pool:
-#        max-active: 8
-#        max-idle: 8
-#        max-wait: -1
-#        min-idle: 0
-
-#  mvc:
-#    view:
-#      prefix: /WEB-INF/views
-#      suffix: .jsp
 
 
-## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
+
 mybatis-plus:
-  mapperLocations: classpath*:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
-  typeAliasesPackage: com.iyiou.yiou.*.*.model.*.*  # 注意：对应实体类的路径
+  mapperLocations: classpath*:mapping/*.xml
+  typeAliasesPackage: com.ntf.ntf_project.model.*
   configuration:
     mapUnderscoreToCamelCase: true
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-## 日志输出范围配置
+
 logging:
   config: classpath:log4j2-spring.xml
-  #path: /mnt/log
-  #file:
-  #path: D:/log
   level:
     com.iyiou.yiou: error
     springfox.documentation: error

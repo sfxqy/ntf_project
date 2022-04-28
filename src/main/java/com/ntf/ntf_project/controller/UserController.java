@@ -1,12 +1,7 @@
 package com.ntf.ntf_project.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.ntf.ntf_project.common.CommonResult;
-import com.ntf.ntf_project.model.LoginResponse;
 import com.ntf.ntf_project.model.User;
-import io.swagger.annotations.ApiOperation;
-import java.util.Objects;
-import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +19,6 @@ public class UserController {
   /**
    * 手机号登录接口
    */
-  @ApiOperation(value = "手机号登录接口")
   @RequestMapping(value = "/mobile", method = RequestMethod.POST)
   public CommonResult<Void> phoneLogin(@RequestBody @Validated User user) {/*
     String phone = loginRequest.getPhone();

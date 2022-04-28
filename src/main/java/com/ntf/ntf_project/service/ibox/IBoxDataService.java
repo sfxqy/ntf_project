@@ -48,10 +48,6 @@ public class IBoxDataService {
   private RestTemplate restTemplate;
 
 
-  public static void main(String[] args)throws Exception {
-    IBoxDataService iBoxDataService = new IBoxDataService();
-    iBoxDataService.login();
-  }
 
   public void login()throws Exception{
 //		配置本地浏览器驱动路径
@@ -147,8 +143,8 @@ public class IBoxDataService {
    * 获取IBox公告信息
    */
   public void getIboxNotice()throws Exception{
-    String data11 = restTemplate.getForObject(IBoxURL.NOTICE_URL, String.class);
-    JSONObject data = restTemplateUtil.getData(IBoxURL.NOTICE_URL);
+    String data11 = restTemplate.getForObject(IBoxURL.HOME_PAGE, String.class);
+    JSONObject data = restTemplateUtil.getData(IBoxURL.HOME_PAGE);
    // String data = restTemplate.getForObject(IBoxURL.NOTICE_URL, String.class);
     System.out.println(data);
     Integer code = (Integer) data.get("code");

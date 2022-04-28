@@ -26,8 +26,7 @@ public class IBoxPushData {
   private IBoxDataService boxDataService;
 
   @PostConstruct
-  @Scheduled(cron = "0 */1 * * * *") //1分钟同步一次数据
-  @SchedulerLock(name = "PushDataToOpenSearch", lockAtLeastForString = "PT5S", lockAtMostForString = "PT1M")
+  @Scheduled(cron = "*/10 * * * * *") //1分钟同步一次数据
   public void pushNotice()throws Exception{
     try {
       boxDataService.getIboxNotice();
